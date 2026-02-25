@@ -6,7 +6,7 @@
 
 - Python 3.13+，uv 管理依赖
 - Agno AgentOS（FastAPI）
-- 智谱 GLM-4.7（通过 OpenAILike 适配）
+- 阿里云百炼 qwen3.5-plus（通过 OpenAILike 适配，多模态）
 - SQLAlchemy + SQLite（开发）/ PostgreSQL（生产）
 - APScheduler（定时推送）
 
@@ -37,9 +37,9 @@ scheduler/push_scheduler.py # 定时+条件推送调度器
 ## 环境变量（.env）
 
 ```
-LLM_MODEL=GLM-4.7
+LLM_MODEL=qwen3.5-plus
 LLM_API_KEY=<key>
-LLM_BASE_URL=https://open.bigmodel.cn/api/coding/paas/v4
+LLM_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
 DATABASE_URL=sqlite:///health_pilot.db
 ```
 
