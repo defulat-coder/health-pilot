@@ -1,9 +1,14 @@
+from datetime import datetime
+
 from agno.agent import Agent
 from agno.db.sqlite import SqliteDb
 from agno.memory import MemoryManager
 from agno.models.openai import OpenAILike
+from agno.run import RunContext
+from sqlalchemy import func
 
 from config import settings
+from models.database import Exercise, Meal, SessionLocal, UserProfile
 from tools.data_analyzer import (
     get_daily_summary,
     get_monthly_summary,
@@ -61,6 +66,56 @@ COACH_INSTRUCTIONS = """\
 - 份量不明："大概吃了多少？一小碗还是一大碗？"
 """
 
+
+def get_user_instructions(run_context: RunContext = None) -> str:
+    if not run_context:
+        return COACH_INSTRUCTIONS
+    user_id = run_context.user_id
+    if not user_id:
+        return COACH_INSTRUCTIONS
+
+    db = SessionLocal()
+    try:
+        profile = db.query(UserProfile).filter(UserProfile.user_id == user_id).first()
+        if not profile or not profile.tdee_kcal:
+            return COACH_INSTRUCTIONS + "\n\n## 当前用户\n这是新用户，尚未建立档案。请优先引导完成基础信息采集。"
+
+        today = datetime.now().date()
+        start = datetime.combine(today, datetime.min.time())
+        end = datetime.combine(today, datetime.max.time())
+
+        total_cal = db.query(func.sum(Meal.calories_kcal)).filter(
+            Meal.user_id == user_id, Meal.recorded_at >= start, Meal.recorded_at <= end
+        ).scalar() or 0
+        total_protein = db.query(func.sum(Meal.protein_g)).filter(
+            Meal.user_id == user_id, Meal.recorded_at >= start, Meal.recorded_at <= end
+        ).scalar() or 0
+        total_exercise = db.query(func.sum(Exercise.calories_burned)).filter(
+            Exercise.user_id == user_id, Exercise.recorded_at >= start, Exercise.recorded_at <= end
+        ).scalar() or 0
+
+        protein_target = (profile.weight_kg or 70) * settings.protein_target_per_kg
+        remaining_cal = profile.tdee_kcal - total_cal + total_exercise
+
+        user_context = f"""
+
+## 当前用户档案
+- 身高：{profile.height_cm or '未知'}cm | 体重：{profile.weight_kg or '未知'}kg | 年龄：{profile.age or '未知'}岁 | 性别：{'男' if profile.gender == 'male' else '女' if profile.gender else '未知'}
+- 活动量：{profile.activity_level or '未知'} | TDEE：{profile.tdee_kcal:.0f}kcal
+- 目标体重：{profile.target_weight_kg or '未设定'}kg | 目标速率：{profile.target_rate_kg_per_week or 0.5}kg/周
+
+## 今日实时数据
+- 已摄入：{total_cal:.0f}kcal / {profile.tdee_kcal:.0f}kcal（剩余 {remaining_cal:.0f}kcal）
+- 蛋白质：{total_protein:.0f}g / {protein_target:.0f}g（{total_protein / protein_target * 100:.0f}%）
+- 运动消耗：{total_exercise:.0f}kcal
+
+回复时参考以上数据，给出针对性建议。"""
+
+        return COACH_INSTRUCTIONS + user_context
+    finally:
+        db.close()
+
+
 db = SqliteDb(db_file="health_pilot.db")
 
 llm = OpenAILike(
@@ -84,7 +139,7 @@ coach_agent = Agent(
     add_history_to_context=True,
     num_history_runs=5,
     add_datetime_to_context=True,
-    instructions=COACH_INSTRUCTIONS,
+    instructions=get_user_instructions,
     tools=[
         record_meal,
         record_weight,
@@ -98,4 +153,5 @@ coach_agent = Agent(
         update_push_schedule,
     ],
     markdown=True,
+    debug_mode=True,
 )

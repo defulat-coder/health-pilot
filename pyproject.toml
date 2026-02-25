@@ -5,13 +5,15 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "agno>=2.5.4",
+    "agno[os]>=2.5.4",
     "anthropic>=0.84.0",
     "apscheduler>=3.11.2",
     "fastapi>=0.133.0",
     "openai>=2.24.0",
+    "opentelemetry-api>=1.39.1",
+    "opentelemetry-sdk>=1.39.1",
     "psycopg2-binary>=2.9.11",
     "pydantic>=2.12.5",
     "sqlalchemy>=2.0.47",
-    "uvicorn>=0.41.0",
+    "uvicorn[standard]>=0.41.0",
 ]

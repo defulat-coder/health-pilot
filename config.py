@@ -8,6 +8,7 @@ class Settings(BaseSettings):
     llm_model: str = "GLM-4.7"
     llm_api_key: str = ""
     llm_base_url: str = "https://open.bigmodel.cn/api/coding/paas/v4"
+    os_security_key: str = ""
 
     default_push_schedule: dict = {
         "breakfast_reminder": "07:30",
