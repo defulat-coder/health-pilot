@@ -11,11 +11,11 @@ def record_weight(
     weight_kg: float,
     body_fat_pct: Optional[float] = None,
 ) -> str:
-    """Record the user's weight. Call this when the user reports their weight, sends a scale photo, or body composition data.
+    """记录用户体重。当用户上报体重、发送体重秤照片或体成分数据时调用。
 
     Args:
-        weight_kg (float): Body weight in kilograms
-        body_fat_pct (float): Body fat percentage, optional
+        weight_kg (float): 体重，单位千克
+        body_fat_pct (float): 体脂率，可选
     """
     user_id = run_context.user_id or "default"
     now = datetime.now()

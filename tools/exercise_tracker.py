@@ -11,12 +11,12 @@ def record_exercise(
     duration_minutes: int,
     calories_burned: float,
 ) -> str:
-    """Record an exercise session. Call this when the user reports exercise, sends a fitness app screenshot, or describes a workout.
+    """记录运动。当用户上报运动、发送健身App截图或描述训练内容时调用。
 
     Args:
-        exercise_type (str): Type of exercise, e.g. "跑步", "游泳", "力量训练"
-        duration_minutes (int): Duration in minutes
-        calories_burned (float): Estimated calories burned
+        exercise_type (str): 运动类型，如 "跑步"、"游泳"、"力量训练"
+        duration_minutes (int): 运动时长，单位分钟
+        calories_burned (float): 估算消耗热量，单位千卡
     """
     user_id = run_context.user_id or "default"
     now = datetime.now()

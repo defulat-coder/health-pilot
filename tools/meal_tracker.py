@@ -25,15 +25,15 @@ def record_meal(
     fat_g: float,
     meal_type: str = "",
 ) -> str:
-    """Record a meal for the user. Call this when the user reports what they ate, sends a food photo, or a delivery order screenshot.
+    """记录用户饮食。当用户上报吃了什么、发送食物照片或外卖订单截图时调用。
 
     Args:
-        description (str): Food description, e.g. "黄焖鸡米饭 + 一个鸡蛋"
-        calories_kcal (float): Estimated total calories in kcal
-        protein_g (float): Estimated protein in grams
-        carbs_g (float): Estimated carbohydrates in grams
-        fat_g (float): Estimated fat in grams
-        meal_type (str): One of breakfast/lunch/dinner/snack. Leave empty to auto-infer from current time.
+        description (str): 食物描述，如 "黄焖鸡米饭 + 一个鸡蛋"
+        calories_kcal (float): 估算总热量，单位千卡
+        protein_g (float): 估算蛋白质，单位克
+        carbs_g (float): 估算碳水化合物，单位克
+        fat_g (float): 估算脂肪，单位克
+        meal_type (str): breakfast/lunch/dinner/snack 之一，留空则根据当前时间自动推断
     """
     user_id = run_context.user_id or "default"
     now = datetime.now()

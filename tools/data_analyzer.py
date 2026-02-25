@@ -8,10 +8,10 @@ from models.database import Exercise, Meal, SessionLocal, UserProfile, Weight
 
 
 def get_daily_summary(run_context: RunContext, date: str = "") -> str:
-    """Get a daily nutrition and exercise summary for the user.
+    """获取用户当日营养与运动摘要。
 
     Args:
-        date (str): Date in YYYY-MM-DD format. Leave empty for today.
+        date (str): 日期，格式 YYYY-MM-DD，留空则为今天
     """
     user_id = run_context.user_id or "default"
     target_date = datetime.strptime(date, "%Y-%m-%d").date() if date else datetime.now().date()
@@ -69,10 +69,7 @@ def get_daily_summary(run_context: RunContext, date: str = "") -> str:
 
 
 def get_weekly_summary(run_context: RunContext) -> str:
-    """Get a weekly nutrition, exercise and weight summary for the user.
-
-    Args:
-    """
+    """获取用户本周营养、运动和体重摘要。"""
     user_id = run_context.user_id or "default"
     today = datetime.now().date()
     week_start = today - timedelta(days=today.weekday())
@@ -120,10 +117,7 @@ def get_weekly_summary(run_context: RunContext) -> str:
 
 
 def get_monthly_summary(run_context: RunContext) -> str:
-    """Get a monthly nutrition and weight summary for the user.
-
-    Args:
-    """
+    """获取用户本月营养与体重摘要。"""
     user_id = run_context.user_id or "default"
     today = datetime.now().date()
     month_start = today.replace(day=1)
@@ -170,10 +164,7 @@ def get_monthly_summary(run_context: RunContext) -> str:
 
 
 def get_weight_trend(run_context: RunContext) -> str:
-    """Get the 7-day moving average weight trend and weekly rate of change.
-
-    Args:
-    """
+    """获取7日移动平均趋势体重及周变化速率。"""
     user_id = run_context.user_id or "default"
     today = datetime.now().date()
 
@@ -195,10 +186,7 @@ def get_weight_trend(run_context: RunContext) -> str:
 
 
 def get_protein_status(run_context: RunContext) -> str:
-    """Get today's protein intake vs target based on user body weight.
-
-    Args:
-    """
+    """获取今日蛋白质摄入量与基于体重的目标对比。"""
     user_id = run_context.user_id or "default"
     today = datetime.now().date()
     start = datetime.combine(today, datetime.min.time())

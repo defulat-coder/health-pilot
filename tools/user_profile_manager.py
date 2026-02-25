@@ -33,16 +33,16 @@ def update_user_profile(
     target_weight_kg: Optional[float] = None,
     target_rate_kg_per_week: Optional[float] = None,
 ) -> str:
-    """Create or update the user's profile. Call this when the user provides personal info like height, weight, age, gender, activity level, or sets weight loss goals.
+    """创建或更新用户档案。当用户提供身高、体重、年龄、性别、活动量等个人信息或设定减脂目标时调用。
 
     Args:
-        height_cm (float): Height in centimeters
-        weight_kg (float): Current weight in kilograms
-        age (int): Age in years
-        gender (str): "male" or "female"
-        activity_level (str): One of "sedentary", "light", "moderate", "heavy"
-        target_weight_kg (float): Target weight in kilograms
-        target_rate_kg_per_week (float): Target weight loss rate per week in kg
+        height_cm (float): 身高，单位厘米
+        weight_kg (float): 当前体重，单位千克
+        age (int): 年龄
+        gender (str): "male" 或 "female"
+        activity_level (str): "sedentary"、"light"、"moderate"、"heavy" 之一
+        target_weight_kg (float): 目标体重，单位千克
+        target_rate_kg_per_week (float): 每周目标减重速率，单位千克
     """
     user_id = run_context.user_id or "default"
 
@@ -111,13 +111,13 @@ def update_push_schedule(
     dinner_reminder: Optional[str] = None,
     weigh_in_reminder: Optional[str] = None,
 ) -> str:
-    """Update the user's push notification schedule. Call this when the user wants to change reminder times.
+    """更新用户推送提醒时间。当用户想修改提醒时间时调用。
 
     Args:
-        breakfast_reminder (str): Time for breakfast reminder, e.g. "08:00"
-        lunch_reminder (str): Time for lunch reminder, e.g. "12:00"
-        dinner_reminder (str): Time for dinner reminder, e.g. "18:00"
-        weigh_in_reminder (str): Time for weigh-in reminder, e.g. "07:30"
+        breakfast_reminder (str): 早餐提醒时间，如 "08:00"
+        lunch_reminder (str): 午餐提醒时间，如 "12:00"
+        dinner_reminder (str): 晚餐提醒时间，如 "18:00"
+        weigh_in_reminder (str): 称重提醒时间，如 "07:30"
     """
     user_id = run_context.user_id or "default"
 
