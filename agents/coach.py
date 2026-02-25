@@ -153,5 +153,6 @@ coach_agent = Agent(
         update_push_schedule,
     ],
     markdown=True,
+    telemetry=True,
     debug_mode=True,
 )
