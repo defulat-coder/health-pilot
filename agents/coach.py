@@ -20,6 +20,8 @@ from tools.exercise_tracker import record_exercise
 from tools.meal_tracker import record_meal
 from tools.user_profile_manager import update_push_schedule, update_user_profile
 from tools.weight_tracker import record_weight
+from tools.visual_analyzer import VisualAnalyzer
+from tools.meal_planner import MealPlanner
 
 COACH_INSTRUCTIONS = """\
 你是一位专业、温暖的1v1减脂健康教练。你的职责是帮助用户科学减脂。
@@ -34,12 +36,15 @@ COACH_INSTRUCTIONS = """\
    - 减脂问答/闲聊 → 直接回复
 
 2. **图片理解**：用户发送图片时：
-   - 食物照片/外卖截图 → 识别食物，估算热量和营养素，调用 record_meal
+   - 菜单/小票照片 → 调用 visual_analyzer.analyze_menu_image 分析热量并给出点单建议（防坑）
+   - 冰箱/食材照片 → 调用 visual_analyzer.generate_recipe_from_fridge 识别食材并生成健康食谱
+   - 食物照片/外卖截图 → 如果是已吃或准备吃的单份食物，识别食物，估算热量和营养素，调用 record_meal
    - 体重秤照片 → OCR提取数字，调用 record_weight
    - 运动App截图 → 提取运动数据，调用 record_exercise
-   - 营养标签 → 提取营养信息
 
-3. **自动记录**：识别到记录意图后直接记录，无需确认。记录后告知用户结果。
+3. **长期备餐**：当用户请求规划多日食谱或买菜清单时，调用 meal_planner.generate_multi_day_plan 工具。
+
+4. **自动记录**：识别到记录意图后直接记录，无需确认。记录后告知用户结果。
 
 4. **热量估算**：基于你的营养学知识估算食物热量和三大营养素（蛋白质、碳水、脂肪），精度允许±15%误差。
 
@@ -167,6 +172,8 @@ coach_agent = Agent(
         get_protein_status,
         update_user_profile,
         update_push_schedule,
+        VisualAnalyzer(),
+        MealPlanner(),
     ],
     markdown=True,
     telemetry=True,

@@ -8,6 +8,12 @@ class Settings(BaseSettings):
     llm_model: str = "GLM-4.7"
     llm_api_key: str = ""
     llm_base_url: str = "https://open.bigmodel.cn/api/coding/paas/v4"
+    
+    # Vision LLM Configuration for Multi-modal features
+    vision_llm_model: str = "qwen-vl-plus"
+    vision_llm_api_key: str = ""
+    vision_llm_base_url: str = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    
     os_security_key: str = ""
     
     embedding_model: str = ""
