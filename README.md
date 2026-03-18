@@ -41,6 +41,8 @@
 
 ## 架构与技术细节
 
+> 💡 **详细的 Agent 提示词设计与实现机制，请参考 [AGENT_DESIGN.md](./AGENT_DESIGN.md)**
+
 - **单 Agent + 多 Tools 架构**：核心基于 `Coach Agent`，辅以饮食记录、体重记录、数据分析等专门的 Tools，实现意图识别与任务执行的统一。
 - **动态 Prompt 注入**：Coach Agent 的 `instructions` 不是静态的，每次运行前会动态查询数据库，将用户的身体档案（身高/体重/TDEE）和今日实时数据（已摄入热量、营养素进度）注入上下文，使得 AI 的回复始终基于最新数据。
 - **推送生成器 (Push Agent)**：独立于主对话 Agent，采用专门的精简 Prompt 根据定时任务或事件触发生成简短、温暖的推送文案，存入 `Notification` 数据库。
