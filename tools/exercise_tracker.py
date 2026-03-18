@@ -1,8 +1,10 @@
+import threading
 from datetime import datetime
 
 from agno.run import RunContext
 
 from models.database import Exercise, SessionLocal
+from scheduler.push_scheduler import check_conditional_triggers
 
 
 def record_exercise(
@@ -32,6 +34,9 @@ def record_exercise(
         )
         db.add(record)
         db.commit()
+
+        # 异步触发条件推送检查
+        threading.Thread(target=check_conditional_triggers, args=(user_id,)).start()
 
         return (
             f"已记录运动：{exercise_type} {duration_minutes}分钟 | 消耗 {calories_burned:.0f}kcal"

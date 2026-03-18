@@ -1,9 +1,11 @@
+import threading
 from datetime import datetime
 from typing import Optional
 
 from agno.run import RunContext
 
 from models.database import SessionLocal, Weight
+from scheduler.push_scheduler import check_conditional_triggers
 
 
 def record_weight(
@@ -30,6 +32,9 @@ def record_weight(
         )
         db.add(record)
         db.commit()
+
+        # 异步触发条件推送检查
+        threading.Thread(target=check_conditional_triggers, args=(user_id,)).start()
 
         msg = f"已记录体重：{weight_kg:.1f}kg"
         if body_fat_pct is not None:

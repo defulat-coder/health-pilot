@@ -179,6 +179,48 @@ def check_conditional_triggers(user_id: str):
         db.close()
 
 
+def check_silent_users():
+    """检查沉默用户并发送关怀推送（每天定时执行）"""
+    db = SessionLocal()
+    try:
+        today = datetime.now().date()
+        start_of_yesterday = datetime.combine(today - timedelta(days=1), datetime.min.time())
+        end_of_today = datetime.combine(today, datetime.max.time())
+        
+        profiles = db.query(UserProfile).all()
+        for profile in profiles:
+            user_id = profile.user_id
+            
+            # 检查当日是否已发送过沉默唤醒
+            already_sent = db.query(Notification).filter(
+                Notification.user_id == user_id,
+                Notification.trigger_name == "silent_wakeup",
+                Notification.created_at >= datetime.combine(today, datetime.min.time())
+            ).first()
+            
+            if already_sent:
+                continue
+
+            # 检查过去24/48小时是否有记录
+            recent_meal = db.query(Meal).filter(
+                Meal.user_id == user_id,
+                Meal.recorded_at >= start_of_yesterday
+            ).first()
+            
+            recent_exercise = db.query(Exercise).filter(
+                Exercise.user_id == user_id,
+                Exercise.recorded_at >= start_of_yesterday
+            ).first()
+            
+            if not recent_meal and not recent_exercise:
+                _generate_push(
+                    user_id, "silent_wakeup",
+                    "用户已经超过一天没有记录饮食或运动了。生成一条温暖的沉默唤醒推送，比如问问是不是太忙了，提醒好好吃饭。"
+                )
+    finally:
+        db.close()
+
+
 def init_scheduler():
     """Initialize the push scheduler with default times."""
     schedule = settings.default_push_schedule
@@ -210,6 +252,16 @@ def init_scheduler():
                 id=trigger_name,
                 replace_existing=True,
             )
+
+    # 添加沉默用户检查任务 (每天20:00执行)
+    scheduler.add_job(
+        check_silent_users,
+        "cron",
+        hour=20,
+        minute=0,
+        id="silent_wakeup_check",
+        replace_existing=True,
+    )
 
     scheduler.start()
 

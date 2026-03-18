@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from agno.agent import Agent
 from agno.db.sqlite import SqliteDb
@@ -8,7 +8,7 @@ from agno.run import RunContext
 from sqlalchemy import func
 
 from config import settings
-from models.database import Exercise, Meal, SessionLocal, UserProfile
+from models.database import Exercise, Meal, Notification, SessionLocal, UserProfile
 from tools.data_analyzer import (
     get_daily_summary,
     get_monthly_summary,
@@ -111,7 +111,23 @@ def get_user_instructions(run_context: RunContext = None) -> str:
 
 回复时参考以上数据，给出针对性建议。"""
 
-        return COACH_INSTRUCTIONS + user_context
+        # 查询最近的主动关怀通知
+        two_hours_ago = datetime.utcnow() - timedelta(hours=2)
+        recent_push = db.query(Notification).filter(
+            Notification.user_id == user_id,
+            Notification.created_at >= two_hours_ago,
+            Notification.delivered == False
+        ).order_by(Notification.created_at.desc()).first()
+
+        push_context = ""
+        if recent_push:
+            push_context = f"""
+            
+## 【系统上下文】主动关怀记录
+系统在刚才（{recent_push.created_at.strftime('%H:%M')}）向用户发送了主动关怀消息：『{recent_push.content}』。
+如果用户当前的输入看起来是在回复这句话，请你顺着这个语境继续对话。否则正常回答。"""
+
+        return COACH_INSTRUCTIONS + user_context + push_context
     finally:
         db.close()
 

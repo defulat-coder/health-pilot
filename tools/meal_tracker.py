@@ -1,8 +1,10 @@
+import threading
 from datetime import datetime
 
 from agno.run import RunContext
 
 from models.database import Meal, SessionLocal
+from scheduler.push_scheduler import check_conditional_triggers
 
 
 def infer_meal_type(hour: int) -> str:
@@ -54,6 +56,9 @@ def record_meal(
         )
         db.add(meal)
         db.commit()
+
+        # 异步触发条件推送检查
+        threading.Thread(target=check_conditional_triggers, args=(user_id,)).start()
 
         return (
             f"已记录{meal_type}：{description}\n"
