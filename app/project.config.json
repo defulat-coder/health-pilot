@@ -2,7 +2,7 @@
   "miniprogramRoot": "dist/",
   "projectname": "health-pilot-taro-template",
   "description": "Health Pilot Taro Mini Program",
-  "appid": "wxee2eae2a41964ed4",
+  "appid": "touristappid",
   "setting": {
     "urlCheck": true,
     "es6": false,

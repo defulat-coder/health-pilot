@@ -33,6 +33,7 @@ export default [
       }
     },
     rules: {
+      'no-unused-vars': 'off',
       'react/jsx-uses-react': 'off',
       'react/react-in-jsx-scope': 'off',
       'react/jsx-uses-vars': 'warn'
