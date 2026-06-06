@@ -14,6 +14,14 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@babel/runtime": "^7.24.4",
+    "@tarojs/components": "^4.0.0",
+    "@tarojs/plugin-framework-react": "^4.0.0",
+    "@tarojs/plugin-platform-weapp": "^4.0.0",
+    "@tarojs/react": "^4.0.0",
+    "@tarojs/runtime": "^4.0.0",
+    "@tarojs/shared": "^4.0.0",
+    "@tarojs/helper": "^4.0.0",
     "@reduxjs/toolkit": "^2.0.0",
     "@tanstack/react-query": "^5.0.0",
     "@tarojs/router": "^4.0.0",
@@ -28,13 +36,21 @@
     "zustand": "^5.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.24.4",
+    "@babel/preset-react": "^7.24.1",
     "@tarojs/cli": "^4.0.0",
+    "@tarojs/plugin-generator": "^4.0.0",
+    "@tarojs/taro-loader": "^4.0.0",
+    "@tarojs/webpack5-runner": "^4.0.0",
     "eslint-config-taro": "^4.0.0",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "babel-preset-taro": "^4.0.0",
     "eslint": "^9.0.0",
     "prettier": "^3.0.0",
+    "sass": "^1.100.0",
     "tailwindcss": "^4.0.0",
+    "tsconfig-paths-webpack-plugin": "^4.2.0",
     "typescript": "^5.0.0",
     "vitest": "^2.0.0"
   }
