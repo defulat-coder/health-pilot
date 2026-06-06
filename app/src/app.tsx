@@ -14,5 +14,4 @@ function App({ children }: PropsWithChildren<any>) {
   return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
 }
 
-
 export default App
