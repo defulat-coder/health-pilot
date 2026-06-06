@@ -8,7 +8,9 @@
     "experimentalDecorators": true,
     "strict": true,
     "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "outDir": "lib",
+    "noEmit": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "sourceMap": true,
@@ -17,6 +19,7 @@
     "jsx": "react-jsx",
     "allowJs": true,
     "resolveJsonModule": true,
+    "skipLibCheck": true,
     "typeRoots": ["node_modules/@types"],
     "paths": {
       "@/*": ["src/*"]

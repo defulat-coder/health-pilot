@@ -38,6 +38,7 @@
   "devDependencies": {
     "@babel/core": "^7.24.4",
     "@babel/preset-react": "^7.24.1",
+    "@eslint/js": "^9.39.4",
     "@tarojs/cli": "4.2.0",
     "@tarojs/plugin-generator": "4.2.0",
     "@tarojs/taro-loader": "4.2.0",
@@ -45,8 +46,10 @@
     "eslint-config-taro": "^4.0.0",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "@typescript-eslint/parser": "^8.60.1",
     "babel-preset-taro": "^4.0.0",
     "eslint": "^9.0.0",
+    "eslint-plugin-react": "^7.37.5",
     "prettier": "^3.0.0",
     "sass": "^1.100.0",
     "tailwindcss": "^4.0.0",
