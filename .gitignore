@@ -10,6 +10,8 @@ __pycache__/
 .codex/skills/.skills_store_lock.json
 
 ios/DoubaoNative/.derivedData/
+ios/DoubaoNative/DoubaoNative.xcodeproj/project.xcworkspace/xcuserdata/
+ios/DoubaoNative/DoubaoNative.xcodeproj/xcuserdata/
 ios/DoubaoNative/Reports/
 ios/DoubaoNative/Screenshots/
 ios/DoubaoNative/ScreenshotsProbe/
