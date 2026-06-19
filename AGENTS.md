@@ -1,64 +1,55 @@
-# Health Pilot
+# Health Pilot Agent Guide
 
-1v1 减脂健康管理 AI 教练 API，基于 Agno AgentOS。
+本文件适用于整个仓库。子目录中的 `AGENTS.md` 会补充或覆盖更具体的规则。
 
-## 技术栈
+## 项目定位
 
-- Python 3.13+，uv 管理依赖
-- Agno AgentOS（FastAPI）
-- LLM 可配置（默认 GLM-4.7，.env 可切换为 qwen3.5-plus 等，通过 OpenAILike 适配，支持多模态）
-- SQLAlchemy + SQLite（开发）/ PostgreSQL（生产）
-- APScheduler（定时推送）
+Health Pilot 是一个轻量个人健康管理产品：用户通过移动 AI 聊天体验记录饮食、体重、运动和图片截图，系统在后端沉淀结构化健康数据、长期记忆和主动关怀推送。前端当前主线是 `ios/DoubaoNative` 的原生 SwiftUI 移动端，后端当前主线是 `backend` 的 Agno AgentOS API。
 
-## 项目结构
+核心产品与设计依据：
 
-```
-main.py                    # AgentOS 入口 + 通知 REST API + CORS 中间件
-config.py                  # 配置管理（pydantic-settings，从 .env 读取）
-agents/coach.py            # Coach Agent 定义（动态 instructions + tools + agentic memory）
-tools/
-  meal_tracker.py          # 饮食记录 tool
-  weight_tracker.py        # 体重记录 tool
-  exercise_tracker.py      # 运动记录 tool
-  data_analyzer.py         # 数据查询（日/周/月摘要、趋势体重、蛋白质达标）
-  user_profile_manager.py  # 用户档案管理 + 推送时间设置
-models/database.py         # SQLAlchemy 模型（UserProfile/Meal/Weight/Exercise/Notification）
-scheduler/push_scheduler.py # 定时+条件推送调度器（含独立 push_agent 生成推送内容）
-```
+- `PRODUCT.md`：产品目标、用户、语气、安全边界和反参考。
+- `DESIGN.md`：Health Pilot 视觉系统与组件原则。
+- `design/reference/doubao-mobile/`：移动端交互与视觉参考截图、manifest、网络/DOM 观察。
+- `docs/research/2026-06-19-doubao-mobile-cdp-analysis.md`：Doubao mobile CDP 研究记录。
+- `docs/superpowers/specs/` 与 `docs/superpowers/plans/`：历史规格与实现计划。
 
-## 架构要点
+## 目录边界
 
-- 单 Coach Agent + 多自定义 Tools，对话驱动所有交互
-- Coach Agent 的 instructions 动态注入用户档案和当日实时数据（`get_user_instructions`）
-- 支持多模态输入（文字+图片），自动识别意图并记录结构化数据
-- Agno Agentic Memory（SqliteDb）管理长期用户记忆（偏好、行为模式）
-- 推送系统：
-  - 定时推送（早/午/晚餐提醒、称重提醒、周报）
-  - 条件触发推送（热量接近上限、蛋白质不达标、连续达标鼓励、体重平台期）
-  - 独立 `push_agent` 生成推送文案，存入 Notification 表，MVP 阶段不接入推送通道
-- 通知 REST API：`GET /api/v1/notifications`（查询）、`POST /api/v1/notifications/{id}/read`（标记已读）
-- 热量/营养素由 LLM 估算，不依赖食物数据库
-- 端口：7777
+- `backend/`：Python 3.13+ 后端，Agno AgentOS/FastAPI、SQLAlchemy、APScheduler、健康记录 tools、主动推送调度。
+- `ios/`：原生 iOS SwiftUI 客户端。当前项目是 `ios/DoubaoNative`。
+- `design/`：参考截图、候选视觉稿和 manifest。修改视觉覆盖时优先保持 manifest 与截图脚本一致。
+- `docs/`：研究、计划、规格和证据材料。新增长期决策应写入合适的 docs 文件，不只写在对话里。
 
-## 环境变量（.env）
+## 工作规则
 
-```
-LLM_MODEL=qwen3.5-plus
-LLM_API_KEY=<key>
-LLM_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
-DATABASE_URL=sqlite:///health_pilot.db
-OS_SECURITY_KEY=<可选，AgentOS 安全密钥>
-```
+- 先读相关目录的 `AGENTS.md`、README 和设计/产品文档，再改代码。
+- 不要回滚或清理用户已有的未提交改动，除非用户明确要求。
+- 不要提交或移动密钥、本地数据库、虚拟环境、DerivedData、临时截图和系统文件。
+- 健康建议相关文案必须保持非医疗诊断边界：不提供诊断或药物建议，不鼓励极端节食。
+- UI 改动必须遵守 `DESIGN.md`：聊天优先、轻量、原生移动节奏、蓝色和中性色为主，不使用 SaaS 式紫蓝渐变、金色装饰或医疗后台风格。
+- 不要复制 Doubao 专有品牌资产或调用受保护 Doubao 接口；只复用观察到的交互模式。
 
-## 启动
+## 常用验证
+
+按改动范围选择最小但充分的验证：
 
 ```bash
+# 后端
+cd backend
+uv sync
+uv run python -m compileall .
 uv run python main.py
+
+# iOS 本地静态/状态验证
+ios/DoubaoNative/Scripts/verify-local.sh
+
+# iOS 工程发现
+xcodebuild -project ios/DoubaoNative/DoubaoNative.xcodeproj -list
 ```
 
-## 编码规范
+后端服务默认运行在 `http://localhost:7777`，健康检查为 `GET /health`。需要联调 iOS 健康摘要时，先启动后端，再验证客户端服务边界。
 
-- 所有 Tool 函数必须有完整中文 docstring（含 Args），Agno 依赖它生成 tool definition
-- Tool 函数通过 `run_context.user_id` 获取当前用户，不要硬编码
-- 数据库操作使用 `SessionLocal()`，用 try/finally 确保关闭
-- 配置统一走 `config.settings`，不要散落硬编码值
+## Git 与生成物
+
+当前仓库可能包含迁移中的文件移动状态。做任务时只改请求范围内的文件，并在最终说明中点明改了哪些文件。避免把以下内容加入版本控制：`.env`、`*.db`、`.venv/`、`.derivedData/`、`__pycache__/`、`.DS_Store`。
