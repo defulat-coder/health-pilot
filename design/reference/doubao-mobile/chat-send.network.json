@@ -1,0 +1,79 @@
+{
+  "action": "typed and sent benign test prompt",
+  "endpointEvents": [
+    {
+      "method": "POST",
+      "status": 200,
+      "type": "XHR",
+      "mimeType": "application/json",
+      "host": "mcs.doubao.com",
+      "path": "/list"
+    },
+    {
+      "method": "POST",
+      "status": null,
+      "type": "XHR",
+      "mimeType": null,
+      "host": "opt.doubao.com",
+      "path": "/monitor_browser/collect/batch/"
+    },
+    {
+      "method": "POST",
+      "status": 200,
+      "type": "Fetch",
+      "mimeType": "text/event-stream",
+      "host": "www.doubao.com",
+      "path": "/chat/completion"
+    },
+    {
+      "method": "POST",
+      "status": 200,
+      "type": "Ping",
+      "mimeType": "application/json",
+      "host": "mcs.doubao.com",
+      "path": "/list"
+    },
+    {
+      "method": "POST",
+      "status": 200,
+      "type": "XHR",
+      "mimeType": "application/json",
+      "host": "www.doubao.com",
+      "path": "/alice/user/get_web_anon_id"
+    },
+    {
+      "method": "POST",
+      "status": 200,
+      "type": "XHR",
+      "mimeType": "application/json",
+      "host": "www.doubao.com",
+      "path": "/im/chain/single"
+    },
+    {
+      "method": "POST",
+      "status": 200,
+      "type": "XHR",
+      "mimeType": "application/json",
+      "host": "www.doubao.com",
+      "path": "/im/message/mark_conv_read"
+    },
+    {
+      "method": "GET",
+      "status": 200,
+      "type": "XHR",
+      "mimeType": "application/json",
+      "host": "www.doubao.com",
+      "path": "/service/settings/v3/"
+    },
+    {
+      "method": "POST",
+      "status": 200,
+      "type": "XHR",
+      "mimeType": "application/json",
+      "host": "www.doubao.com",
+      "path": "/im/conversation/info"
+    }
+  ],
+  "webSockets": [],
+  "eventSourceMessages": []
+}

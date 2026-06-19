@@ -1,0 +1,83 @@
+{
+  "probes": [
+    {
+      "h": 844,
+      "role": null,
+      "tag": "DIV",
+      "text": "新对话",
+      "w": 390,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "h": 844,
+      "role": null,
+      "tag": "DIV",
+      "text": "AI 生成可能有误",
+      "w": 390,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "h": 844,
+      "role": null,
+      "tag": "DIV",
+      "text": "有什么我能帮你的吗",
+      "w": 390,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "h": 844,
+      "role": null,
+      "tag": "DIV",
+      "text": "下载应用",
+      "w": 390,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "h": 844,
+      "role": null,
+      "tag": "DIV",
+      "text": "登录",
+      "w": 390,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "h": 24,
+      "role": null,
+      "tag": "TEXTAREA",
+      "text": "发消息",
+      "w": 318,
+      "x": 36,
+      "y": 744
+    },
+    {
+      "h": 844,
+      "role": null,
+      "tag": "DIV",
+      "text": "快速",
+      "w": 390,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "h": 844,
+      "role": null,
+      "tag": "DIV",
+      "text": "更多",
+      "w": 390,
+      "x": 0,
+      "y": 0
+    }
+  ],
+  "title": "豆包 - 字节跳动旗下 AI 智能助手",
+  "url": "https://www.doubao.com/chat",
+  "viewport": {
+    "dpr": 3,
+    "h": 844,
+    "w": 390
+  }
+}

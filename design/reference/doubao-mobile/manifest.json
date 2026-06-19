@@ -1,0 +1,269 @@
+{
+  "capture": {
+    "height": 844,
+    "source": "https://www.doubao.com/chat",
+    "width": 390
+  },
+  "scenarios": [
+    {
+      "description": "Logged-out chat home",
+      "file": "chat-home.png",
+      "snapshot": "chat-home"
+    },
+    {
+      "description": "Composer with typed prompt and active send button",
+      "file": "chat-send-ready.png",
+      "snapshot": "chat-send-ready"
+    },
+    {
+      "description": "Chat after sending a benign greeting prompt",
+      "file": "chat-after-send.png",
+      "snapshot": "chat-after-send"
+    },
+    {
+      "description": "Chat reply actions area with follow-up chips and download promo",
+      "file": "chat-reply-actions.png",
+      "snapshot": "chat-reply-actions"
+    },
+    {
+      "description": "Tapping the assistant reply body leaves the visible reply actions unchanged",
+      "file": "chat-reply-tapped.png",
+      "snapshot": "chat-reply-tapped"
+    },
+    {
+      "description": "Clicking a follow-up chip appends a long assistant answer in the same chat",
+      "file": "chat-followup-after-click.png",
+      "snapshot": "chat-followup-after-click"
+    },
+    {
+      "description": "Long follow-up answer bottom with suggested next prompts",
+      "file": "chat-followup-bottom.png",
+      "snapshot": "chat-followup-bottom"
+    },
+    {
+      "description": "Tapping the reply download promo leaves the chat visible without login",
+      "file": "chat-promo-download-tap.png",
+      "snapshot": "chat-promo-download-tap"
+    },
+    {
+      "description": "Conversation title edit modal",
+      "file": "chat-title-edit.png",
+      "snapshot": "chat-title-edit"
+    },
+    {
+      "description": "Selecting conversation share opens login",
+      "file": "chat-share-login.png",
+      "snapshot": "chat-share-login"
+    },
+    {
+      "description": "Selecting empty composer voice input opens login",
+      "file": "chat-mic-login.png",
+      "snapshot": "chat-mic-login"
+    },
+    {
+      "description": "Sending after anonymous usage limit opens login",
+      "file": "chat-rate-limit-login.png",
+      "snapshot": "chat-rate-limit-login"
+    },
+    {
+      "description": "Left drawer open",
+      "file": "sidebar.png",
+      "snapshot": "sidebar"
+    },
+    {
+      "description": "About popover opened from the drawer",
+      "file": "about.png",
+      "snapshot": "about"
+    },
+    {
+      "description": "Sidebar download desktop tooltip",
+      "file": "sidebar-download-tooltip.png",
+      "snapshot": "sidebar-download-tooltip"
+    },
+    {
+      "description": "Login modal phone account mode",
+      "file": "login-account.png",
+      "snapshot": "login-account"
+    },
+    {
+      "description": "Login modal with phone and accepted terms",
+      "file": "login-phone-ready.png",
+      "snapshot": "login-phone-ready"
+    },
+    {
+      "description": "Login phone verification code modal after requesting SMS code",
+      "file": "login-phone-code.png",
+      "snapshot": "login-phone-code"
+    },
+    {
+      "description": "Login modal QR mode",
+      "file": "login-qr.png",
+      "snapshot": "login-qr"
+    },
+    {
+      "description": "Login modal area code picker",
+      "file": "login-area-picker.png",
+      "snapshot": "login-area-picker"
+    },
+    {
+      "description": "Login modal after selecting Hong Kong area code",
+      "file": "login-area-selected-hk.png",
+      "snapshot": "login-area-selected-hk"
+    },
+    {
+      "description": "Login modal with accepted terms and empty phone",
+      "file": "login-terms-checked.png",
+      "snapshot": "login-terms-checked"
+    },
+    {
+      "description": "Tapping Douyin one-click login before accepting terms opens service agreement confirmation",
+      "file": "login-douyin-consent.png",
+      "snapshot": "login-douyin-consent"
+    },
+    {
+      "description": "Accepting Douyin service confirmation opens the mobile Douyin authorization page",
+      "file": "login-douyin-oauth.png",
+      "snapshot": "login-douyin-oauth"
+    },
+    {
+      "description": "Chat model menu",
+      "file": "chat-model-menu.png",
+      "snapshot": "chat-model-menu"
+    },
+    {
+      "description": "Selecting expert chat model opens login",
+      "file": "chat-model-expert-login.png",
+      "snapshot": "chat-model-expert-login"
+    },
+    {
+      "description": "Selecting office chat model opens login",
+      "file": "chat-model-office-login.png",
+      "snapshot": "chat-model-office-login"
+    },
+    {
+      "description": "Chat tool menu",
+      "file": "chat-tool-menu.png",
+      "snapshot": "chat-tool-menu"
+    },
+    {
+      "description": "Selecting PPT tool opens login",
+      "file": "chat-tool-ppt-login.png",
+      "snapshot": "chat-tool-ppt-login"
+    },
+    {
+      "description": "Selecting image generation tool opens login",
+      "file": "chat-tool-image-login.png",
+      "snapshot": "chat-tool-image-login"
+    },
+    {
+      "description": "Selecting video generation tool opens login",
+      "file": "chat-tool-video-login.png",
+      "snapshot": "chat-tool-video-login"
+    },
+    {
+      "description": "Selecting recording transcription opens desktop download prompt",
+      "file": "chat-tool-recording-download.png",
+      "snapshot": "chat-tool-recording-download"
+    },
+    {
+      "description": "AI Creation image tab",
+      "file": "creation-image.png",
+      "snapshot": "creation-image"
+    },
+    {
+      "description": "AI Creation image prompt with active send button",
+      "file": "creation-prompt-ready.png",
+      "snapshot": "creation-prompt-ready"
+    },
+    {
+      "description": "AI Creation image send opens login while retaining prompt",
+      "file": "creation-image-send-login.png",
+      "snapshot": "creation-image-send-login"
+    },
+    {
+      "description": "AI Creation empty image voice input opens login",
+      "file": "creation-image-mic-login.png",
+      "snapshot": "creation-image-mic-login"
+    },
+    {
+      "description": "AI Creation reference image limit tooltip after tapping reference image",
+      "file": "creation-reference-tooltip.png",
+      "snapshot": "creation-reference-tooltip"
+    },
+    {
+      "description": "AI Creation AI cut feature opens login",
+      "file": "creation-ai-cut-login.png",
+      "snapshot": "creation-ai-cut-login"
+    },
+    {
+      "description": "AI Creation video generation workspace",
+      "file": "creation-video.png",
+      "snapshot": "creation-video"
+    },
+    {
+      "description": "AI Creation video model menu",
+      "file": "creation-video-model-menu.png",
+      "snapshot": "creation-video-model-menu"
+    },
+    {
+      "description": "AI Creation video duration menu",
+      "file": "creation-video-duration-menu.png",
+      "snapshot": "creation-video-duration-menu"
+    },
+    {
+      "description": "AI Creation video ratio submenu",
+      "file": "creation-video-ratio-menu.png",
+      "snapshot": "creation-video-ratio-menu"
+    },
+    {
+      "description": "AI Creation video prompt with active send button",
+      "file": "creation-video-prompt-ready.png",
+      "snapshot": "creation-video-prompt-ready"
+    },
+    {
+      "description": "AI Creation video upload opens login",
+      "file": "creation-video-upload-login.png",
+      "snapshot": "creation-video-upload-login"
+    },
+    {
+      "description": "AI Creation video send opens login",
+      "file": "creation-video-send-login.png",
+      "snapshot": "creation-video-send-login"
+    },
+    {
+      "description": "AI Creation image more menu",
+      "file": "creation-more-menu.png",
+      "snapshot": "creation-more-menu"
+    },
+    {
+      "description": "AI Creation image model submenu",
+      "file": "creation-image-model-menu.png",
+      "snapshot": "creation-image-model-menu"
+    },
+    {
+      "description": "AI Creation image ratio submenu",
+      "file": "creation-ratio-menu.png",
+      "snapshot": "creation-ratio-menu"
+    },
+    {
+      "description": "AI Creation image style submenu",
+      "file": "creation-style-menu.png",
+      "snapshot": "creation-style-menu"
+    },
+    {
+      "description": "AI Creation image model selected and reflected in more menu",
+      "file": "creation-image-model-selected.png",
+      "snapshot": "creation-image-model-selected"
+    },
+    {
+      "description": "AI Creation image ratio selected and reflected in more menu",
+      "file": "creation-ratio-selected.png",
+      "snapshot": "creation-ratio-selected"
+    },
+    {
+      "description": "AI Creation image style selected and reflected in more menu",
+      "file": "creation-style-selected.png",
+      "snapshot": "creation-style-selected"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+<button node_id=1 />
+<button node_id=2 />
+<button node_id=3 />
+<button node_id=4 aria-disabled="false" type="button">下载应用</button>
+<button node_id=5 aria-disabled="false" type="button">登录</button>
+<button node_id=6 />
+<button node_id=7 type="button">快速</button>
+<button node_id=8>快速</button>
+<button node_id=9>更多</button>
+<textarea node_id=10 placeholder="发消息..." />

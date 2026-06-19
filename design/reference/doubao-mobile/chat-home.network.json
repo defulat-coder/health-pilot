@@ -1,0 +1,146 @@
+[
+  {
+    "method": "POST",
+    "status": 200,
+    "type": "XHR",
+    "mimeType": "application/json",
+    "host": "www.doubao.com",
+    "path": "/biz/onboarding/get_nexpulse"
+  },
+  {
+    "method": "GET",
+    "status": 200,
+    "type": "XHR",
+    "mimeType": "application/json",
+    "host": "www.doubao.com",
+    "path": "/alice/user/get_web_anon_id"
+  },
+  {
+    "method": "POST",
+    "status": 200,
+    "type": "XHR",
+    "mimeType": "application/json",
+    "host": "mcs.doubao.com",
+    "path": "/service/2/abtest_config/"
+  },
+  {
+    "method": "POST",
+    "status": 200,
+    "type": "XHR",
+    "mimeType": "application/json",
+    "host": "mcs.doubao.com",
+    "path": "/tobid"
+  },
+  {
+    "method": "POST",
+    "status": 200,
+    "type": "XHR",
+    "mimeType": "application/json",
+    "host": "mcs.doubao.com",
+    "path": "/list"
+  },
+  {
+    "method": "POST",
+    "status": 200,
+    "type": "XHR",
+    "mimeType": "application/json",
+    "host": "www.doubao.com",
+    "path": "/im/chain/recent_conv"
+  },
+  {
+    "method": "GET",
+    "status": 200,
+    "type": "XHR",
+    "mimeType": "application/json",
+    "host": "www.doubao.com",
+    "path": "/check_and_get_text/00d51bf0012811ee97fd5fdb0b0365a9/normal/web"
+  },
+  {
+    "method": "GET",
+    "status": 200,
+    "type": "XHR",
+    "mimeType": "text/plain",
+    "host": "lf3-config.bytetcc.com",
+    "path": "/obj/tcc-config-web/tcc-v2-data-flow.web.doubao-default"
+  },
+  {
+    "method": "POST",
+    "status": 200,
+    "type": "XHR",
+    "mimeType": "application/json",
+    "host": "www.doubao.com",
+    "path": "/alice/user/launch"
+  },
+  {
+    "method": "POST",
+    "status": 200,
+    "type": "XHR",
+    "mimeType": "application/json",
+    "host": "www.doubao.com",
+    "path": "/samantha/skill/recommend"
+  },
+  {
+    "method": "POST",
+    "status": 200,
+    "type": "XHR",
+    "mimeType": "application/json",
+    "host": "www.doubao.com",
+    "path": "/alice/call/downgrade_config_pc"
+  },
+  {
+    "method": "POST",
+    "status": 200,
+    "type": "XHR",
+    "mimeType": "application/json",
+    "host": "www.doubao.com",
+    "path": "/alice/commerce/sale/subscription/entry/config/"
+  },
+  {
+    "method": "GET",
+    "status": 200,
+    "type": "XHR",
+    "mimeType": "application/json",
+    "host": "www.doubao.com",
+    "path": "/samantha/fission/entrance"
+  },
+  {
+    "method": "POST",
+    "status": 200,
+    "type": "XHR",
+    "mimeType": "application/json",
+    "host": "www.doubao.com",
+    "path": "/samantha/user/ab/get"
+  },
+  {
+    "method": "GET",
+    "status": 200,
+    "type": "XHR",
+    "mimeType": "application/json",
+    "host": "opt.doubao.com",
+    "path": "/monitor_web/settings/browser-settings"
+  },
+  {
+    "method": "GET",
+    "status": 200,
+    "type": "XHR",
+    "mimeType": "application/json",
+    "host": "www.doubao.com",
+    "path": "/service/settings/v3/"
+  },
+  {
+    "method": "POST",
+    "status": 200,
+    "type": "XHR",
+    "mimeType": "application/json",
+    "host": "www.doubao.com",
+    "path": "/im/message/send_rate_limit"
+  },
+  {
+    "method": "POST",
+    "status": null,
+    "type": "XHR",
+    "mimeType": null,
+    "host": "opt.doubao.com",
+    "path": "/monitor_browser/collect/batch/"
+  }
+]

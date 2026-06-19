@@ -1,0 +1,98 @@
+[
+  {
+    "method": "GET",
+    "status": 200,
+    "type": "XHR",
+    "mimeType": "application/json",
+    "host": "www.doubao.com",
+    "path": "/alice/call/downgrade_config_pc"
+  },
+  {
+    "method": "GET",
+    "status": 200,
+    "type": "XHR",
+    "mimeType": "application/json",
+    "host": "mcs.doubao.com",
+    "path": "/list"
+  },
+  {
+    "method": "POST",
+    "status": 200,
+    "type": "XHR",
+    "mimeType": "application/json",
+    "host": "www.doubao.com",
+    "path": "/samantha/skill/pack"
+  },
+  {
+    "method": "GET",
+    "status": 200,
+    "type": "XHR",
+    "mimeType": "application/json",
+    "host": "www.doubao.com",
+    "path": "/alice/commerce/sale/subscription/entry/config/"
+  },
+  {
+    "method": "POST",
+    "status": null,
+    "type": "XHR",
+    "mimeType": null,
+    "host": "opt.doubao.com",
+    "path": "/monitor_browser/collect/batch/"
+  },
+  {
+    "method": "GET",
+    "status": 200,
+    "type": "XHR",
+    "mimeType": "application/json",
+    "host": "www.doubao.com",
+    "path": "/samantha/fission/entrance"
+  },
+  {
+    "method": "POST",
+    "status": 200,
+    "type": "XHR",
+    "mimeType": "application/json",
+    "host": "mcs.doubao.com",
+    "path": "/list"
+  },
+  {
+    "method": "GET",
+    "status": 200,
+    "type": "XHR",
+    "mimeType": "application/json",
+    "host": "www.doubao.com",
+    "path": "/alice/user/launch"
+  },
+  {
+    "method": "POST",
+    "status": 200,
+    "type": "XHR",
+    "mimeType": "application/json",
+    "host": "www.doubao.com",
+    "path": "/im/message/send_rate_limit"
+  },
+  {
+    "method": "GET",
+    "status": 200,
+    "type": "XHR",
+    "mimeType": "application/json",
+    "host": "www.doubao.com",
+    "path": "/samantha/user/ab/get"
+  },
+  {
+    "method": "GET",
+    "status": 200,
+    "type": "XHR",
+    "mimeType": "application/json",
+    "host": "www.doubao.com",
+    "path": "/service/settings/v3/"
+  },
+  {
+    "method": "GET",
+    "status": 200,
+    "type": "XHR",
+    "mimeType": "application/json",
+    "host": "www.doubao.com",
+    "path": "/samantha/skill/recommend"
+  }
+]
